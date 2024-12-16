@@ -13,4 +13,20 @@ const myObject = {
         }
         };
         console.log(myObject);
-        
+
+let myArray = [1, 2, 3, 4, 5];
+console.log(myArray);
+
+const mySet = new Set([1, 2, 3, 4, 5]);
+console.log(mySet);
+
+const sum = () => {
+    const a=10;
+    const b=20;
+    const c=a+b;
+    const d=c*2;
+    return d;
+}; 
+console.log(sum());
+
+ let arr = [1, 2, 3, 4, 5];
