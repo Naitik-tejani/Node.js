@@ -1,5 +1,5 @@
 const http = require('http');
-const port = 8000;
+const port = 9000;
 const fs = require('fs');
 
 const server = http.createServer((req, res) => {
@@ -7,6 +7,9 @@ const server = http.createServer((req, res) => {
     switch (req.url) {
         case "/":
             fileName = "./home.html";
+            break;
+            case "/about":
+            fileName = "./about.html";
             break;
     }
     fs.readFile(fileName,(err, pagename)=> {
@@ -17,6 +20,7 @@ const server = http.createServer((req, res) => {
     res.end(pagename)
 });
      })
+     
 server.listen(port, (err) => {
     if (err) {
         console.log(`server is start on port :- ${port}`);
