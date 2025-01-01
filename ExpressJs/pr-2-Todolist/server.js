@@ -1,5 +1,5 @@
 const express=require('express'); 
-const port=8060;
+const port=8000;
 const app =express();
 
 app.set('view engine','ejs');
