@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #7f00ff, #e100ff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            text-align: center;
+            animation: popIn 1s ease forwards;
+            transform: scale(0.8);
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff6f61;
+            font-size: 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            margin: 0 auto;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            border-color: #7f00ff;
+            outline: none;
+            box-shadow: 0 0 15px rgba(127, 0, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        input[type="submit"] {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(45deg, #ff8c00, #ff0080);
+            box-shadow: 0 10px 20px rgba(255, 128, 0, 0.6);
+            transform: translateY(-3px);
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #7f00ff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            animation: fadeIn 1.5s ease 1.5s forwards;
+            opacity: 0;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff6f61;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Add Task</h2>
+        <form method="post" action="adduser">
+            <table>
+                <tr>
+                    <td>Task</td>
+                    <td><input type="text" name="usertask" placeholder="Enter Task"></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td><input type="text" name="userstatus" placeholder="Enter Status"></td>
+                </tr>
+                <tr>
+                    <td>Deadline</td>
+                    <td><input type="date" name="userdate"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Add Task"></td>
+                </tr>
+            </table>
+            <a href="/">View Tasks</a>
+        </form>
+    </div>
+</body>
+
+</html>

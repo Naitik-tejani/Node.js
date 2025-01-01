@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View User</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: zoomIn 1.2s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff6f61;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            color: #333;
+        }
+
+        th {
+            background: linear-gradient(135deg, #ff6f61, #ff9966);
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #ffe5e7;
+            transform: scale(1.02);
+            transition: all 0.3s ease-in-out;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff6f61, #ff9966);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            background: linear-gradient(45deg, #ff9966, #ff6f61);
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.5);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>View Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% record.map((val, i) => { %>
+                    <tr>
+                        <td><%= ++i %></td>
+                        <td><%= val.task %></td>
+                        <td><%= val.status %></td>
+                        <td><%= val.dedline %></td>
+                        <td>
+                            <a href="/deleteuser?deleteId=<%= val.id %>">Delete</a>
+                            <a href="/edituser?id=<%= val.id %>">Edit</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="/add">Add Task</a>
+    </div>
+</body>
+
+</html>

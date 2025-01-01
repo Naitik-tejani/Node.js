@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: gradientShift 6s infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            width: 450px;
+            text-align: center;
+            transform: scale(0.8);
+            animation: popIn 1s ease forwards;
+        }
+
+        @keyframes popIn {
+            to { transform: scale(1); }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff6f61;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        td {
+            padding: 15px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="date"]:focus {
+            border-color: #ff6f61;
+            box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+            transform: scale(1.05);
+        }
+
+        input[type="submit"] {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff6f61, #ff9966);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #ff6f61;
+            text-decoration: none;
+            font-size: 16px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff0080;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Edit Task</h2>
+        <form method="post" action="updateuser">
+            <input type="hidden" name="editid" value="<%= single.id %>">
+            <table>
+                <tr>
+                    <td>Task</td>
+                    <td><input type="text" name="usertask" value="<%= single.task %>"></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td><input type="text" name="userstatus" value="<%= single.status %>"></td>
+                </tr>
+                <tr>
+                    <td>Deadline</td>
+                    <td><input type="date" name="userdate" value="<%= single.deadline %>"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Save Changes"></td>
+                </tr>
+            </table>
+            <a href="/">View Tasks</a>
+        </form>
+    </div>
+</body>
+
+</html>
