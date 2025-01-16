@@ -1,134 +1,249 @@
-<div class="sidebar">
-    <div class="scrollbar-inner sidebar-wrapper">
-        <div class="user">
-            <div class="photo">
-                <img src="assets/img/profile.jpg">
-            </div>
-            <div class="info">
-                <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                    <span>
-                        Hizrian
-                        <span class="user-level">Administrator</span>
-                        <span class="caret"></span>
-                    </span>
-                </a>
-                <div class="clearfix"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            color: #fff;
+        }
 
-                <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
-                    <ul class="nav">
-                        <li>
-                            <a href="#profile">
-                                <span class="link-collapse">My Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#edit">
-                                <span class="link-collapse">Edit Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#settings">
-                                <span class="link-collapse">Settings</span>
-                            </a>
-                        </li>
-                    </ul>
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(135deg, #434343, #000000);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-wrapper {
+            padding: 15px;
+        }
+
+        .user {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .user .photo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .user .info span {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .user .user-level {
+            font-size: 0.9rem;
+            color: #f1f1f1;
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .nav-item {
+            margin: 10px 0;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-item a i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .nav-item a:hover {
+            background: #f76c6c;
+            box-shadow: 0 5px 15px rgba(247, 108, 108, 0.4);
+        }
+
+        .badge-count {
+            margin-left: auto;
+            background: #f76c6c;
+            color: #fff;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+
+        .update-pro button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #ff6a00, #ee0979);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .update-pro button:hover {
+            box-shadow: 0 5px 20px rgba(238, 9, 121, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .modal-header {
+            background: #f76c6c;
+            color: #fff;
+        }
+
+        .modal-body p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .modal-footer button {
+            border-radius: 8px;
+        }
+
+        /* Scrollbar Styling */
+        .scrollbar-inner {
+            scrollbar-width: thin;
+            scrollbar-color: #f76c6c #333;
+        }
+
+        .scrollbar-inner::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scrollbar-inner::-webkit-scrollbar-thumb {
+            background: #f76c6c;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="scrollbar-inner sidebar-wrapper">
+            <div class="user">
+                <div class="photo">
+                    <img src="assets/img/profile.jpg" alt="Profile Picture">
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                        <span>
+                            Hizrian
+                            <span class="user-level">Administrator</span>
+                        </span>
+                    </a>
+                    <div class="collapse show" id="collapseExample">
+                        <ul class="nav">
+                            <li><a href="#profile">My Profile</a></li>
+                            <li><a href="#edit">Edit Profile</a></li>
+                            <li><a href="#settings">Settings</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a href="index.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                        <span class="badge badge-count">5</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="components.html">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <p>Components</p>
+                        <span class="badge badge-count">14</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="forms.html">
+                        <i class="fas fa-keyboard"></i>
+                        <p>Forms</p>
+                        <span class="badge badge-count">50</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="tables.html">
+                        <i class="fas fa-table"></i>
+                        <p>Tables</p>
+                        <span class="badge badge-count">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="notifications.html">
+                        <i class="fas fa-bell"></i>
+                        <p>Notifications</p>
+                        <span class="badge badge-success">3</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="typography.html">
+                        <i class="fas fa-font"></i>
+                        <p>Typography</p>
+                        <span class="badge badge-danger">25</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="icons.html">
+                        <i class="fas fa-icons"></i>
+                        <p>Icons</p>
+                    </a>
+                </li>
+                <li class="nav-item update-pro">
+                    <button data-toggle="modal" data-target="#modalUpdate">
+                        <i class="fas fa-rocket"></i>
+                        Update To Pro
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Under Development</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development.</p>
+                    <p><b>We'll let you know when it's done!</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-        <ul class="nav">
-            <li class="nav-item active">
-                <a href="index.html">
-                    <i class="la la-dashboard"></i>
-                    <p>Dashboard</p>
-                    <span class="badge badge-count">5</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="components.html">
-                    <i class="la la-table"></i>
-                    <p>Components</p>
-                    <span class="badge badge-count">14</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="forms.html">
-                    <i class="la la-keyboard-o"></i>
-                    <p>Forms</p>
-                    <span class="badge badge-count">50</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="tables.html">
-                    <i class="la la-th"></i>
-                    <p>Tables</p>
-                    <span class="badge badge-count">6</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="notifications.html">
-                    <i class="la la-bell"></i>
-                    <p>Notifications</p>
-                    <span class="badge badge-success">3</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="typography.html">
-                    <i class="la la-font"></i>
-                    <p>Typography</p>
-                    <span class="badge badge-danger">25</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="icons.html">
-                    <i class="la la-fonticons"></i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li class="nav-item update-pro">
-                <button  data-toggle="modal" data-target="#modalUpdate">
-                    <i class="la la-hand-pointer-o"></i>
-                    <p>Update To Pro</p>
-                </button>
-            </li>
-        </ul>
     </div>
-</div>
-</div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">									
-                <p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development</p>
-                <p>
-                    <b>We'll let you know when it's done</b></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
 </body>
-<script src="assets/js/core/jquery.3.2.1.min.js"></script>
-<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
-<script src="assets/js/plugin/chartist/chartist.min.js"></script>
-<script src="assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
-<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-<script src="assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
-<script src="assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
-<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
-<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-<script src="assets/js/ready.min.js"></script>
-<script src="assets/js/demo.js"></script>
 </html>
