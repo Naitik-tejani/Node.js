@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1>view user</h1>
+
+        <form action="/viewuser">
+            <table border="1" align="center">
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>name</td>
+                        <td>email</td>
+                        <td>password</td>
+                        <td>delete</td>
+                        <td>edit</td>
+                        <td>gender</td>
+                        <td>hobby</td>
+                        <td>city</td>
+                        <td>image</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% allrecord.map((val,i)=>{
+                        %>
+                        <tr>
+                            <td>
+                                <%=val.id%>
+                            </td>
+                            <td>
+                                <%=val.username%>
+                            </td>
+                            <td>
+                                <%=val.useremail%>
+                            </td>
+                            <td>
+                                <%=val.userpassword%>
+                            </td>
+
+                            <td>
+                                <a href="/deleteid?did=<%= val?.id %>">delete</a>
+                            </td>
+                            <td>
+
+                                <a href="/edituser?eid=<%= val?.id %>">edit</a>
+                            </td>
+                            <td>
+                                <%=val.gender%>
+                            </td>
+                            <td>
+                                <%=val.hobby%>
+                            </td>
+                            <td>
+                                <%=val.city%>
+                            </td>
+                            <td>
+                                <img src="<%= val?.image %>" width="150px">
+                            </td>
+
+                        </tr>
+
+
+                        <% }) %>
+                </tbody>
+            </table>
+
+            <a href="/">form</a>
+
+        </form>
+
+    </div>
+</body>
+
+</html>

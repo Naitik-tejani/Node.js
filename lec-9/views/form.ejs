@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/adduser" method="post" align="center" enctype="multipart/form-data">
+        <h1>add user</h1>
+        <table align="center" border="1">
+            <tr>
+                <td>name :</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>email :</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>password :</td>
+                <td><input type="text" name="password"></td>
+            </tr>
+            <tr>
+                <td>gender :</td>
+                <td><input type="radio" name="gender" value="male">male
+                    <input type="radio" name="gender" value="female">female
+                </td>
+            </tr>
+            <tr>
+                <td>hobby :</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="cricket">cricket
+                    <input type="checkbox" name="hobby" value="music">music
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>file :</td>
+                <td><input type="file" name="image"></td>
+            </tr>
+
+            <tr>
+                <td>City:</td>
+                <td>
+                    <select name="city">
+                        <option value="">-----select city-----</option>
+                        <% const cities=["surat", "ahemdabad" , "vadodara" , "rajkot" ]; cities.forEach(c=> {
+                            %>
+                            <option value="<%= c %>">
+                                <%= c %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit"></td>
+            </tr>
+        </table>
+        <a href="/viewuser">view</a>
+    </form>
+
+</body>
+
+</html>
