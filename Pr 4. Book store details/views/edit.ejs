@@ -6,87 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Book</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
         body {
-            font-family: 'Roboto', sans-serif;
             margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f4f4f9;
+            overflow: hidden;
         }
 
         .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             width: 400px;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
+            max-width: 90%;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
             text-align: center;
-            font-size: 24px;
-            color: #2c3e50;
+            color: #6a11cb;
+            font-size: 2rem;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
         }
 
         label {
-            font-size: 16px;
-            color: #333;
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
             font-size: 14px;
-            margin-bottom: 15px;
-            color: #555;
-            transition: border-color 0.3s ease;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
         }
 
-        input[type="text"]:focus,
-        input[type="number"]:focus {
-            border-color: #3498db;
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background: #f4f4f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            transition: box-shadow 0.3s, transform 0.2s;
+        }
+
+        input[type="text"]:focus {
             outline: none;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
 
         input[type="submit"] {
-            background-color: #3498db;
-            color: #ffffff;
-            padding: 12px 20px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             width: 100%;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s, transform 0.2s;
         }
 
         input[type="submit"]:hover {
-            background-color: #2980b9;
+            background: linear-gradient(to left, #6a11cb, #2575fc);
+            transform: translateY(-3px);
         }
 
         a {
-            display: block;
-            margin-top: 15px;
             text-align: center;
-            color: #3498db;
+            display: block;
+            color: #6a11cb;
             text-decoration: none;
             font-size: 14px;
             font-weight: bold;
-            transition: color 0.3s ease;
+            margin-top: 15px;
+            transition: color 0.3s, transform 0.2s;
         }
 
         a:hover {
-            color: #2980b9;
-            text-decoration: underline;
+            color: #2575fc;
+            transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
@@ -96,34 +117,54 @@
             }
 
             h1 {
-                font-size: 20px;
+                font-size: 1.5rem;
             }
+        }
 
-            label {
-                font-size: 14px;
+        .hover-effect {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106, 17, 203, 0.4), rgba(37, 117, 252, 0.1));
+            pointer-events: none;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: scale(1) translate(-50%, -50%);
+            }
+            50% {
+                transform: scale(1.2) translate(-50%, -50%);
+            }
+            100% {
+                transform: scale(1) translate(-50%, -50%);
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="hover-effect"></div>
     <div class="form-container">
         <h1>Edit Book</h1>
         <form action="/updateuser" method="post">
             <label for="editid">ID</label>
-            <input type="text" id="editid" name="editid" value="<%= single?.id %>">
+            <input type="text" id="editid" name="editid" value="<%= single?.id %>" required>
 
             <label for="bookname">Book Name</label>
-            <input type="text" id="bookname" name="bookname" value="<%= single.bookname %>">
+            <input type="text" id="bookname" name="bookname" value="<%= single.bookname %>" required>
 
             <label for="description">Description</label>
-            <input type="text" id="description" name="descripion" value="<%= single.descripion %>">
+            <input type="text" id="description" name="descripion" value="<%= single.descripion %>" required>
 
             <label for="price">Price</label>
-            <input type="text" id="price" name="Price" value="<%= single.Price %>">
+            <input type="text" id="price" name="Price" value="<%= single.Price %>" required>
 
             <label for="authorname">Author Name</label>
-            <input type="text" id="authorname" name="authorname" value="<%= single.authorname %>">
+            <input type="text" id="authorname" name="authorname" value="<%= single.authorname %>" required>
 
             <input type="submit" value="Submit">
             <a href="/viewuser">View All Users</a>
