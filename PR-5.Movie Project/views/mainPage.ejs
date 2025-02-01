@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Project</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <img src="https://cdn.prod.website-files.com/600ee75084e3fe0e5731624c/65b6384089ec9e265952391f_bookmyshow-logo-vector-removebg-preview%20(1).png"
+                width="200" alt="">
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities">
+        </div>
+
+        <div class="nav-right">
+            <!--
+            <span class="location">Surat ▼</span> -->
+            <a href="/movie" class="sign-in text-white mx-3">Sign in</a>
+        </div>
+
+        <div class="toggle">☰</div>
+    </div>
+
+    <div class="menu">
+        <div class="container">
+            <div class="row">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="menu-left">
+                        <ul class="d-flex align-items-center">
+                            <li>
+                                <a href="#">Movies</a>
+                            </li>
+                            <li>
+                                <a href="#">Streams</a>
+                            </li>
+                            <li>
+                                <a href="#">Events</a>
+                            </li>
+                            <li>
+                                <a href="#">Plays</a>
+                            </li>
+                            <li>
+                                <a href="#">Sports</a>
+                            </li>
+                            <li>
+                                <a href="#">Activities</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-right">
+                        <ul class="d-flex align-items-center">
+                            <li>
+                                <a href="#">ListYourShow</a>
+                            </li>
+                            <li>
+                                <a href="#">Corporates</a>
+                            </li>
+                            <li>
+                                <a href="#">Offers</a>
+                            </li>
+                            <li>
+                                <a href="#">GiftCards</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1726036566435_playcardnewweb.jpg"
+                    class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1737102544903_asbregions1240x300.jpg"
+                    class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <div class="movie-list my-4">
+        <div class="container">
+            <div class="row">
+                <div class="title d-flex align-items-center justify-content-between">
+                    <h3>Recommended Movies</h3>
+                    <a href="#">See All ></a>
+                </div>
+                <div class="movies">
+                    <div class="movie-card">
+                        <div class="promoted">PROMOTED</div>
+                        <img
+                            src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@like_202006280402.png,lx-24,ly-617,w-29,l-end:l-text,ie-MS4zSyBMaWtlcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00428340-xfzxceecdj-portrait.jpg">
+                        <div class="movie-info">
+                            <p class="movie-title">Faati Ne?</p>
+                            <p class="movie-genre">Comedy/Horror</p>
+                            <p class="movie-likes">👍 1.3K Likes</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img
+                            src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@like_202006280402.png,lx-24,ly-617,w-29,l-end:l-text,ie-NTdLIExpa2Vz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00374104-dnppdsswxh-portrait.jpg">
+                        <div class="movie-info">
+                            <p class="movie-title">Deva</p>
+                            <p class="movie-genre">Action/Thriller</p>
+                            <p class="movie-likes">👍 57K Likes</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img
+                            src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OC45LzEwICAzMUsgVm90ZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00371539-yqjkjctnet-portrait.jpg">
+                        <div class="movie-info">
+                            <p class="movie-title">Sky Force</p>
+                            <p class="movie-genre">Action/Historical/Thriller</p>
+                            <p class="movie-rating">⭐ 8.9/10 (31K Votes)</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img
+                            src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OS4xLzEwICAxLjJLIFZvdGVz,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00420660-klqhuapgqz-portrait.jpg">
+                        <div class="movie-info">
+                            <p class="movie-title">Umbarro</p>
+                            <p class="movie-genre">Comedy/Drama/Family</p>
+                            <p class="movie-rating">⭐ 9.1/10 (1.2K Votes)</p>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img
+                            src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OC41LzEwICAxNDAgVm90ZXM%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00430011-hkuzdjfumq-portrait.jpg">
+                        <div class="movie-info">
+                            <p class="movie-title">Daaku Maharaaj (Hindi)</p>
+                            <p class="movie-genre">Action/Drama/Thriller</p>
+                            <p class="movie-rating">⭐ 8.5/10 (140 Votes)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stream-img my-4">
+        <div class="container">
+            <div class="row">
+                <div class="img">
+                    <img src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120/stream-leadin-web-collection-202210241242.png"
+                        width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="footer-line d-flex align-items-center justify-content-center">
+                    <div class="line"></div>
+                    <a href="#">
+                        <img src="https://cdn.prod.website-files.com/600ee75084e3fe0e5731624c/65b6384089ec9e265952391f_bookmyshow-logo-vector-removebg-preview%20(1).png"
+                            width="150" alt="">
+                    </a>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

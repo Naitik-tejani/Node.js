@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div align="center">
+        <h1>View Data</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cover</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% all.map((val) => { %>
+                    <tr>
+                        <td>
+                            <%= val?.id %>
+                        </td>
+                        <td>
+                            <img src="<%= val?.image %>" width="100" alt="">
+                        </td>
+                        <td>
+                            <%= val?.name %>
+                        </td>
+                        <td>
+                            <%= val?.description %>
+                        </td>
+                        <td>
+                            <%= val?.price %>
+                        </td>
+                        <td>
+                            <a href="/movie/deletedata?delId=<%= val?.id %>" class="delete-link">Delete</a>
+                            <a href="/movie/editdata?editId=<%= val?.id %>" class="edit-link">Edit</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="/movie/add">Add</a>
+        <a href="/">Home</a>
+    </div>
+</body>
+</html>
