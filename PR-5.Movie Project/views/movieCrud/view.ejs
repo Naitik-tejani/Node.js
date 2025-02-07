@@ -3,15 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crazy Animated Table</title>
 
-    
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes neonGlow {
+            0% { text-shadow: 0 0 5px #efc2c2; }
+            50% { text-shadow: 0 0 15px #ffffff; }
+            100% { text-shadow: 0 0 5px #f6eff6; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://akm-img-a-in.tosshub.com/indiatoday/images/story/202012/Netflix-New-Feature-Audio-Only_1200x768.jpeg?size=690:388');
+            background-size: cover;
+            
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 2px solid #d376a5;
+            animation: slideIn 1s ease-out;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ff007f;
+            text-align: center;
+        }
+
+        th {
+            background: #ff007f;
+            color: white;
+            font-size: 18px;
+        }
+
+        tr {
+            background:tra;
+            transition: background 0.3s ease-in-out;
+        }
+
+        tr:hover {
+            background: #c0bfbf;
+            color: white;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .delete-link, .edit-link {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .delete-link:hover, .edit-link:hover {
+            animation: bounce 0.5s infinite;
+        }
+
+        a {
+            color: #ff00ff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+        }
+
+        a:hover {
+            animation: neonGlow 1s infinite alternate;
+        }
+    </style>
 </head>
 <body>
-    <div align="center">
-        <h1>View Data</h1>
-        <table border="1">
+    <div>
+        <h1 style="color: #ffffff;">View Data</h1>
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -25,21 +125,11 @@
             <tbody>
                 <% all.map((val) => { %>
                     <tr>
-                        <td>
-                            <%= val?.id %>
-                        </td>
-                        <td>
-                            <img src="<%= val?.image %>" width="100" alt="">
-                        </td>
-                        <td>
-                            <%= val?.name %>
-                        </td>
-                        <td>
-                            <%= val?.description %>
-                        </td>
-                        <td>
-                            <%= val?.price %>
-                        </td>
+                        <td><%= val?.id %></td>
+                        <td><img src="<%= val?.image %>" width="100" alt=""></td>
+                        <td><%= val?.name %></td>
+                        <td><%= val?.description %></td>
+                        <td><%= val?.price %></td>
                         <td>
                             <a href="/movie/deletedata?delId=<%= val?.id %>" class="delete-link">Delete</a>
                             <a href="/movie/editdata?editId=<%= val?.id %>" class="edit-link">Edit</a>

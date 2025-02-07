@@ -13,6 +13,92 @@
 </head>
 
 <body>
+    <style>
+        /* Crazy Animations */
+/* Hide scrollbar but allow scrolling */
+body {
+    overflow-y: scroll;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+/* Bouncing Logo */
+.logo img {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+/* Glowing Search Bar */
+.search-bar input {
+    border: 2px solid #ff5733;
+    box-shadow: 0 0 10px #ff5733;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.search-bar input:focus {
+    box-shadow: 0 0 20px #ef6c4e;
+}
+
+/* Wacky Menu Hover */
+.menu a {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+.menu a:hover {
+    transform: rotate(-5deg) scale(1.2);
+    color: #ff5733 !important;
+}
+
+/* Movie Card Animation */
+.movie-card {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+.movie-card:hover {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Flashing Movie Title */
+.movie-title {
+    animation: flash 1.5s infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        color: #ff5733;
+    }
+    100% {
+        color: #fff;
+    }
+}
+
+/* Wavy Footer Animation */
+.footer-line img {
+    animation: wave 2s infinite alternate;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+    </style>
 
     <div class="navbar">
         <div class="logo">
@@ -43,17 +129,19 @@
                                 <a href="#">Movies</a>
                             </li>
                             <li>
-                                <a href="#">Streams</a>
+                                <a href="#">Sports</a>
                             </li>
                             <li>
                                 <a href="#">Events</a>
                             </li>
                             <li>
+                                <a href="#">Streams</a>
+                            </li>
+                           
+                            <li>
                                 <a href="#">Plays</a>
                             </li>
-                            <li>
-                                <a href="#">Sports</a>
-                            </li>
+                            
                             <li>
                                 <a href="#">Activities</a>
                             </li>
@@ -84,8 +172,8 @@
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1726036566435_playcardnewweb.jpg"
-                    class="d-block w-100" alt="...">
+                <img src="https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg"
+                    class="d-block " width="100%" height="350px" alt="...">
             </div>
             <div class="carousel-item">
                 <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1737102544903_asbregions1240x300.jpg"
@@ -220,8 +308,8 @@
         <div class="container">
             <div class="row">
                 <div class="img">
-                    <img src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120/stream-leadin-web-collection-202210241242.png"
-                        width="100%">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/007/533/705/small/neon-cinema-projector-sign-vector.jpg"
+                        width="100%" height="200px">
                 </div>
             </div>
         </div>
@@ -234,7 +322,7 @@
                     <div class="line"></div>
                     <a href="#">
                         <img src="https://www.pngall.com/wp-content/uploads/15/Amazon-Prime-Video-Logo-PNG-Images.png"
-                            width="150" alt="">
+                            width="100" alt="">
                     </a>
                     <div class="line"></div>
                 </div>
