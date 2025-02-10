@@ -1,3 +1,4 @@
+
 const express = require('express');
 const { addData, viewData, insertData, deleteData, editData, updateData } = require('../controllers/movieController');
 
