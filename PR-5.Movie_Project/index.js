@@ -17,7 +17,7 @@ app.use('/uploads',express.static(path.join(__dirname,'uploads')));
 app.use(express.urlencoded());
 
 app.get('/',(req,res) => {
-    return res.render('mainPage')
+    return res.render('moviePage')
 })
 
 app.use('/',require('./routes/indexRoute'));
