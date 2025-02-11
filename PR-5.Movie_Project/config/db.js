@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1/movie');
+mongoose.connect('mongodb://localhost/movie');
 
 const db = mongoose.connection;
 
