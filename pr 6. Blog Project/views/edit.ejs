@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Edit User</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #ff6600);
+            font-family: 'Comic Sans MS', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: bg-move 5s infinite alternate;
+        }
+
+        @keyframes bg-move {
+            0% { background-position: left; }
+            100% { background-position: right; }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px #00ffff;
+            text-align: center;
+            animation: bounce 2s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-10px); }
+        }
+
+        h2 {
+            color: #ffcc00;
+            text-shadow: 2px 2px 5px #ff00ff;
+            font-size: 2.5rem;
+        }
+
+        label {
+            color: #ffcc00;
+            font-size: 1.2rem;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 3px solid #00ffff;
+            background: #000;
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        input:focus {
+            box-shadow: 0px 0px 10px #ff00ff;
+        }
+
+        input[type="submit"] {
+            margin-top: 1rem;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            color: #fff;
+            box-shadow: 0px 0px 10px #ff00ff;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px #ff00ff;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        a:hover {
+            text-shadow: 0px 0px 10px #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌀 Edit Your Crazy Details 🌀</h2>
+        <form action="/updatedata" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="editid" value="<%= single.id %>">
+            <label>Blog Name:</label>
+            <input type="text" name="pname" value="<%= single.pname %>" required><br><br>
+            <label>Description:</label>
+            <input type="text" name="description" value="<%= single.description %>" required><br><br>
+           
+            
+            <label>Upload New Image:</label>
+            <input type="file" name="imageFile"><br><br>
+            <img src="<%= single.image %>" width="100" /><br><br>
+            <input type="submit" value="🚀 Update User 🚀">
+        </form>
+        <a href="/dashboard">🔙 Back to Crazy Dashboard 🔙</a>
+    </div>
+</body>
+</html>
