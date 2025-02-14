@@ -21,9 +21,9 @@ const registerPage = (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        const { pname, email, password } = req.body;
+        const { name, email, password } = req.body;
         let user = await UserModel.create({
-            pname: pname,
+            name: name,
             email: email,
             password: password
         });
@@ -157,7 +157,7 @@ const updateData = async (req, res) => {
             }
 
             await ProUser.findByIdAndUpdate(id, {
-                pname: req.body?.pname,
+                name: req.body?.name,
                 description: req.body?.description,
                 slocation: req.body?.slocation,
                 unit: req.body?.unit,
@@ -168,7 +168,7 @@ const updateData = async (req, res) => {
             });
         } else {
             await ProUser.findByIdAndUpdate(id, {
-                pname: req.body?.pname,
+                name: req.body?.name,
                 description: req.body?.description,
                 slocation: req.body?.slocation,
                 unit: req.body?.unit,
