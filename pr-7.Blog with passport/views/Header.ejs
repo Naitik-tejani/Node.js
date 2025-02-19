@@ -1,0 +1,73 @@
+</div>
+
+<!-- jQuery and Bootstrap -->
+<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Custom Scrollbar -->
+<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+
+<!-- Core JS -->
+<script src="dist/js/waves.js"></script>
+<script src="dist/js/sidebarmenu.js"></script>
+<script src="dist/js/custom.min.js"></script>
+
+<!-- Charting Libraries -->
+<script src="assets/libs/flot/excanvas.js"></script>
+<script src="assets/libs/flot/jquery.flot.js"></script>
+<script src="assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="assets/libs/flot/jquery.flot.time.js"></script>
+<script src="assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="dist/js/pages/chart/chart-page-init.js"></script>
+
+<!-- Futuristic Neon UI Enhancements -->
+<style>
+    body {
+        background: #0d0d0d;
+        color: #fff;
+        font-family: 'Orbitron', sans-serif;
+    }
+    .neon-text {
+        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    }
+    .neon-btn {
+        background: linear-gradient(135deg, #ff00ff, #00ffff);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+        transition: 0.3s;
+    }
+    .neon-btn:hover {
+        box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+    }
+    .topbar {
+        background: rgba(0, 0, 0, 0.8);
+        border-bottom: 2px solid #ff00ff;
+    }
+    .sidebar-link {
+        color: #fff;
+        transition: 0.3s;
+    }
+    .sidebar-link:hover {
+        text-shadow: 0 0 10px #00ffff;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        $('.neon-btn').on('mouseenter', function() {
+            $(this).css('box-shadow', '0 0 20px #ff00ff, 0 0 40px #00ffff');
+        }).on('mouseleave', function() {
+            $(this).css('box-shadow', '0 0 10px #ff00ff, 0 0 20px #00ffff');
+        });
+    });
+</script>
+
+</body>
+</html>

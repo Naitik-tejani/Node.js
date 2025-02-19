@@ -1,0 +1,44 @@
+<%- include('Header') %>
+
+<div class="page-wrapper" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); padding: 2rem; min-height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center;">
+    <div class="container text-center">
+        <h1 class="text-white fw-bold" style="font-size: 2.5rem; text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);">🎨 Unleash Your Creativity!</h1>
+        <p class="text-white-50" style="font-size: 1.2rem;">Write your thoughts, share your ideas, and inspire the world.</p>
+        
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="card border-0" style="border-radius: 25px; overflow: hidden; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);">
+                    <div class="p-4">
+                        <form action="/insertBlog" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-white">📌 Title:</label>
+                                <input type="text" class="form-control" name="title" required style="border-radius: 15px; background: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 12px;">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-white">📝 Description:</label>
+                                <textarea class="form-control" name="description" required style="border-radius: 15px; background: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 12px; height: 120px;"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-white">👤 Author:</label>
+                                <input type="text" class="form-control" name="author" required style="border-radius: 15px; background: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 12px;">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-white">📷 Upload an Image:</label>
+                                <input type="file" class="form-control" name="image" required style="border-radius: 15px; background: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 12px;">
+                            </div>
+
+                            <button type="submit" class="btn w-100" style="border-radius: 15px; font-weight: bold; background: linear-gradient(135deg, #ff7eb3, #ff758c); color: white; padding: 14px; font-size: 1.2rem; box-shadow: 0 6px 15px rgba(255, 117, 140, 0.4); transition: all 0.3s;">
+                                🚀 Publish Your Masterpiece
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('Footer') %>

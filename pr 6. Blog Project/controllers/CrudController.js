@@ -94,7 +94,7 @@ const informationPage = async (req, res) => {
 const insertData = async (req, res) => {
     try {
         const { name, description } = req.body;
-        const image = req.file ? req.file.path : '';  // Ensure multer is configured properly
+        const image = req.file ? req.file.path : 'default-image.jpg';  // Use a default image
 
         await ProUser.create({
             name,
@@ -108,7 +108,6 @@ const insertData = async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 };
-
 const deleteUser = async (req, res) => {
     try {
         const userId = req.query.id;
@@ -159,21 +158,13 @@ const updateData = async (req, res) => {
             await ProUser.findByIdAndUpdate(id, {
                 name: req.body?.name,
                 description: req.body?.description,
-                slocation: req.body?.slocation,
-                unit: req.body?.unit,
-                pid: req.body?.pid,
-                sqty: req.body?.sqty,
-                image: req.file.path,
+                image: req.file?.path,
 
             });
         } else {
             await ProUser.findByIdAndUpdate(id, {
                 name: req.body?.name,
                 description: req.body?.description,
-                slocation: req.body?.slocation,
-                unit: req.body?.unit,
-                pid: req.body?.pid,
-                sqty: req.body?.sqty,
                 image: old?.image,
 
             });

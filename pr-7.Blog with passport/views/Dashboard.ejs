@@ -1,0 +1,70 @@
+<%- include('Header') %>
+
+<section id="blog" style="padding: 3rem; background: linear-gradient(135deg, #1e1e2e, #3a3a6a); min-height: 100vh; margin-top: 0;">
+    <% if (blogs.length === 0) { %>
+        <h2 align="center" class="text-neon fw-bold" style="margin-top: 3%; font-size: 2.5rem; text-shadow: 0 0 15px #0ff, 0 0 30px #00f;">
+            📌 No Blog Posts Yet
+        </h2>
+    <% } else { %>
+        <h2 align="center" class="text-neon fw-bold" style="margin-top: 3%; font-size: 2.5rem; text-shadow: 0 0 15px #0ff, 0 0 30px #00f;">
+            📚 Blog Vault
+        </h2>
+
+        <div class="container">
+            <div class="row">
+                <% blogs.map((blog) => { %>
+                    <div class="col-md-4 d-flex" style="width: 100%;">
+                        <div class="blog-card shadow-lg border-0 d-flex flex-column h-100 neon-border" style="border-radius: 20px; overflow: hidden; background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); transition: transform 0.3s, box-shadow 0.3s;">
+                            <div class="image" style="height: 200px; overflow: hidden; border-radius: 20px 20px 0 0;">
+                                <img src="<%= blog?.image %>" alt="Blog image" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(80%) saturate(120%);">
+                            </div>
+                            <div class="content p-4 d-flex flex-column flex-grow-1">
+                                <h3 class="title text-neon fw-bold" style="font-size: 1.8rem; text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff0099;">
+                                    <%= blog?.title %>
+                                </h3>
+                                <p class="author text-neon-light" style="font-style: italic; font-size: 1rem;">👤 <%= blog?.author %></p>
+                                <p class="description text-white flex-grow-1">
+                                    <%= blog?.description.slice(0, 90) %>...
+                                </p>
+                                <a href="/readmore?readmoreId=<%= blog?.id %>" class="neon-btn w-100">
+                                    📖 Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    <% } %>
+</section>
+
+<style>
+    .text-neon {
+        color: #0ff;
+        text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+    }
+    .text-neon-light {
+        color: #ff00ff;
+        text-shadow: 0 0 5px #ff0099;
+    }
+    .neon-border {
+        border: 1px solid rgba(0, 255, 255, 0.5);
+    }
+    .neon-btn {
+        border-radius: 12px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #ff0, #ff0099);
+        color: white;
+        padding: 12px;
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.5), 0 0 30px rgba(255, 255, 0, 0.3);
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+        text-decoration: none;
+    }
+    .neon-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.7), 0 0 40px rgba(255, 255, 0, 0.5);
+    }
+</style>
+
+<%- include('Footer') %>
