@@ -53,7 +53,7 @@ const forgotPassword = async (req,res) => {
         service: 'gmail',
         auth: {
           user: '7133naitiktejani@gmail.com',
-          pass: 'pzhm qslc zuez jpfr'
+          pass: 'qmay bmaf ybim nfto'
         }
       });
       

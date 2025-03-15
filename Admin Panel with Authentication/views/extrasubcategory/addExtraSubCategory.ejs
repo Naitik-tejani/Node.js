@@ -51,7 +51,7 @@
                                             <label for="fname" class="col-sm-3 text-right control-label col-form-label">
                                                 Category</label>
                                             <div class="col-sm-9">
-                                                <select name="category" id="category" onchange="categoryChange()" class="form-control">
+                                                <select name="category" class="form-control" onchange="categoryRecord()">
                                                     <option>--- Select Category ---</option>
                                                     <% category.map((val)=>{ %>
                                                         <option value="<%= val?.id %>">
@@ -66,8 +66,13 @@
                                             <label for="fname" class="col-sm-3 text-right control-label col-form-label">
                                                 SubCategory</label>
                                             <div class="col-sm-9">
-                                                <select name="subcategory" id="subcategory" class="form-control">
-                                                    <option>---select subcategory---</option>
+                                                <select name="subcategory" class="form-control">
+                                                    <option>--- Select SubCategory ---</option>
+                                                    <% subcategory.map((val)=>{ %>
+                                                        <option value="<%= val?.id %>">
+                                                            <%= val?.subcategory %>
+                                                        </option>
+                                                        <% }) %>
                                                 </select>
                                             </div>
                                         </div>
@@ -108,36 +113,71 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-       
+        <script>
+            // Wait for the page to load, then hide the message after 3 seconds
+            // window.onload = function () {
+            //     setTimeout(function () {
+            //         const successMessage = document.getElementById('success-message');
+            //         if (successMessage) {
+            //             successMessage.style.display = 'none';
+            //         }
+            //     }, 3000);
+            // };
+        </script>
         <footer class="footer text-center">
             All Rights Reserved by Matrix-admin. Designed and Developed by <a
                 href="https://wrappixel.com">WrapPixel</a>.
         </footer>
-
-        <script>
-            const categoryChange = () => {
-                let categoryid = document.getElementById('category').value;
-                $.ajax({
-                    type: 'GET',
-                    url: `/extrasubcategory/ajaxcategorywiserecords?categoryId=${categoryid}`,
-                    success: function (data) {
-                        let subcategory = data.subcategory;
-                        let tbl = "";
-                        tbl += `<option>---select subcategory---</option>`;
-                        subcategory.map((val)=>{
-                            tbl += `
-                                        <option value=${val?._id}>${val.subcategory}</option>
-                                    `
-                        })  
-                        document.getElementById('subcategory').innerHTML = tbl;
-                        
-                    }
-                })
-            }
-        </script>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        const categoryRecord = () => {
+            let catid = document.getElementById('category').value;
+            $.ajax({
+                method : 'GET',
+                url : `/extrasubcategory/ajaxcategorywiserecords?categoryid=${catid}`,
+                success : function (res) {
+                    if (res.success) {
+                        let tbl = "";
+                        tbl += `<option>---select subcategory---</option>`;
+                        let subcategories = res.subcategories;
+                        subcategories.map((val) => {
+                            console.log(val);
+                            
+                            tbl += `<option value=${val?._id}> ${val?.subcategory} </option>`;
+                        });
+                        document.getElementById('subcategory').innerHTML = tbl;
+                    }
+                }
+            });
+        };
+    </script>
+
+    <!-- <script type="text/javascript">
+        const categoryRecord = () => {
+            let categoryId = document.getElementById('category').value;
+            $.ajax({
+                type: "GET",
+                url: `/exsubcategory/ajaxcategorywiserecords?categoryId=${categoryId}`,
+                success: function (res) {
+                    let subcategory = res.subcategory;
+
+                    console.log(subcategory);
+                    
+                    let tbl = "";
+                    tbl += `<option value="">---select subcategory---</option>`
+                    subcategory.map((cat, index) => {
+                        tbl += `<option value='${cat?._id}'>${cat?.subcategory}</option>`
+                    })
+                    document.getElementById('subcategory').innerHTML = tbl
+
+                }
+            })
+        }
+    </script> -->
     <%- include('../footer') %>

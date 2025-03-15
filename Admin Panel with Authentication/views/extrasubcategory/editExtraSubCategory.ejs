@@ -1,13 +1,10 @@
 <%- include('../header') %>
 
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Add Subcategory</h4>
+                    <h4 class="page-title">Edit ExtraSubcategory</h4>
                     <div class="ml-auto text-right">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -19,19 +16,7 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
-
-
-
             <div class="row">
                 <div class="col-md-6">
 
@@ -41,21 +26,24 @@
                         </div>
                         <% } %>
                             <div class="card">
-                                <form class="form-horizontal" method="post" action="/extrasubcategory/extraupdatesubcategory">
+                                <form class="form-horizontal" method="post"
+                                    action="/extrasubcategory/insertextrasubcategory">
                                     <input type="hidden" name="editId" value="<%= oneRowRecord?.id %>" />
                                     <div class="card-body">
-                                        <h4 class="card-title">Subcategory</h4>
+                                        <h4 class="card-title">ExtraSubcategory</h4>
                                         <div class="form-group row">
                                             <label for="fname"
                                                 class="col-sm-3 text-right control-label col-form-label">Category</label>
                                             <div class="col-sm-9">
                                                 <select name="category" class="form-control">
                                                     <option>---select category---</option>
-                                                    <% allCategories.map((val, index) => { %>
-                                                        <option value="<%= val?.id %>" <%= (oneRowRecord?.categoryId?.category === val?.category) ? 'selected' : '' %>>
+                                                    <% allCategories.map((val, index)=> { %>
+                                                        <option value="<%= val?.id %>"
+                                                            <%=(oneRowRecord?.categoryId?.category===val?.category)
+                                                            ? 'selected' : '' %>>
                                                             <%= val?.category %>
                                                         </option>
-                                                    <% }) %>
+                                                        <% }) %>
                                                 </select>
                                             </div>
                                         </div>
@@ -63,16 +51,11 @@
                                             <label for="fname"
                                                 class="col-sm-3 text-right control-label col-form-label">Subcategory</label>
 
-                                                <div class="col-sm-9">
-                                                    <select name="subcategory" id="subcategory" class="form-control">
-                                                        <option>---Select SubCategory---</option>
-                                                        <!-- <% allCategories.map((val, index) => { %>
-                                                            <option value="<%= val?.id %>" <%= (oneRowRecord?.categoryId?.category === val?.category) ? 'selected' : '' %>>
-                                                                <%= val?.category %>
-                                                            </option>
-                                                        <% }) %> -->
-                                                    </select>
-                                                </div>
+                                            <div class="col-sm-9">
+                                                <select name="subcategory" id="subcategory" class="form-control">
+                                                    <option>---Select SubCategory---</option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <div class="form-group row">
@@ -93,60 +76,59 @@
                                     </div>
                                 </form>
                             </div>
-
-
                 </div>
-
             </div>
-
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
         <footer class="footer text-center">
             All Rights Reserved by Matrix-admin. Designed and Developed by <a
                 href="https://wrappixel.com">WrapPixel</a>.
         </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
 
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script type="text/javascript">
-        const categoryChange = () => {
-            let categoryId = document.getElementById('category').value;
+        const editSubcategory = () => {
+            let catid = `<%= oneRowRecord?.categoryId?.id %>`;
+            let subcateid = `<%= oneRowRecord?.subcategoryId?.id %>`;
             $.ajax({
-                type: "GET",
-                url: `/extrasubcategory/ajaxcategorywiserecords?categoryId=${categoryId}`,
+                method: 'GET',
+                url: `/extrasubcategory/ajaxcategorywiserecords?categoryid=${catid}`,
                 success: function (res) {
-                    let subCategory = res.subcategory;
+                    console.log(res);
+                    
+                    let subcategory = res.subcategories;
+                    let category = res.category;
                     let tbl = "";
-                    tbl += `
-                                <option value = "">---Select SubCategory---</option > 
-                            `
-                    subCategory.map((val, i) => {
-                        tbl += `<option value = '${val?._id}' > ${val?.subcategory}</option>`
-                    })
+                    tbl += `<option>---select subcategory---</option>`;
+                    category.map((val) => {
+                        tbl += `<option ${val?._id == subcateid ? 'selected' : ''} value=${val?._id}>${val?.subcategory}</option>`;
+                    });
                     document.getElementById('subcategory').innerHTML = tbl;
                 }
-            })
-
-        }
+            });
+        };
+        editSubcategory();
+    
+        const categoryChange = () => {
+            let catid = document.getElementById('category').value;
+            $.ajax({
+                method: 'GET',
+                url: `/extrasubcategory/ajaxcategorywiserecords?categoryid=${catid}`,
+                success: function (res) {
+                    if (res.success) {
+                        let tbl = "";
+                        tbl += `<option value="">---select subcategory---</option>`;
+                        let category = res.category;
+                        category.map((val) => {
+                            tbl += `<option value=${val?._id}>${val?.subcategory}</option>`;
+                        });
+                        document.getElementById('subcategory').innerHTML = tbl;
+                    }
+                }
+            });
+        };
     </script>
+
 
     <%- include('../footer') %>
