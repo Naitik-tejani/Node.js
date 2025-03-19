@@ -1,134 +1,187 @@
 <%- include('../header') %>
 
-    <div class="page-wrapper">
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Edit ExtraSubcategory</h4>
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Library</li>
-                            </ol>
-                        </nav>
-                    </div>
+<div class="page-wrapper">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Edit ExtraSubcategory</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-
-                    <% if(locals?.message?.success) { %>
-                        <div class="alert alert-success" role="alert">
-                            <%= locals?.message?.success %>
-                        </div>
-                        <% } %>
-                            <div class="card">
-                                <form class="form-horizontal" method="post"
-                                    action="/extrasubcategory/insertextrasubcategory">
-                                    <input type="hidden" name="editId" value="<%= oneRowRecord?.id %>" />
-                                    <div class="card-body">
-                                        <h4 class="card-title">ExtraSubcategory</h4>
-                                        <div class="form-group row">
-                                            <label for="fname"
-                                                class="col-sm-3 text-right control-label col-form-label">Category</label>
-                                            <div class="col-sm-9">
-                                                <select name="category" class="form-control">
-                                                    <option>---select category---</option>
-                                                    <% allCategories.map((val, index)=> { %>
-                                                        <option value="<%= val?.id %>"
-                                                            <%=(oneRowRecord?.categoryId?.category===val?.category)
-                                                            ? 'selected' : '' %>>
-                                                            <%= val?.category %>
-                                                        </option>
-                                                        <% }) %>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="fname"
-                                                class="col-sm-3 text-right control-label col-form-label">Subcategory</label>
-
-                                            <div class="col-sm-9">
-                                                <select name="subcategory" id="subcategory" class="form-control">
-                                                    <option>---Select SubCategory---</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="fname"
-                                                class="col-sm-3 text-right control-label col-form-label">Exsubcategory</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" value="<%= oneRowRecord?.extraSubCategory %>"
-                                                    name="extrasubcategory" class="form-control"
-                                                    placeholder="ExtraSubCategory Name Here">
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="border-top">
-                                        <div class="card-body">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                </div>
-            </div>
-        </div>
-        <footer class="footer text-center">
-            All Rights Reserved by Matrix-admin. Designed and Developed by <a
-                href="https://wrappixel.com">WrapPixel</a>.
-        </footer>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <% if(locals?.message?.success) { %>
+                <div class="alert alert-success flip-out" id="success-message">
+                    <%= locals?.message?.success %>
+                </div>
+                <% } %>
 
-    <script type="text/javascript">
-        const editSubcategory = () => {
-            let catid = `<%= oneRowRecord?.categoryId?.id %>`;
-            let subcateid = `<%= oneRowRecord?.subcategoryId?.id %>`;
-            $.ajax({
-                method: 'GET',
-                url: `/extrasubcategory/ajaxcategorywiserecords?categoryid=${catid}`,
-                success: function (res) {
-                    console.log(res);
-                    
-                    let subcategory = res.subcategories;
+                <div class="card animated-card">
+                    <form class="form-horizontal" method="post" action="/extrasubcategory/insertextrasubcategory">
+                        <input type="hidden" name="editId" value="<%= oneRowRecord?.id %>" />
+                        <div class="card-body">
+                            <h4 class="card-title">ExtraSubcategory</h4>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label col-form-label">Category</label>
+                                <div class="col-sm-9">
+                                    <select name="category" class="form-control bounce-in" id="category"
+                                        onchange="categoryChange()">
+                                        <option>---select category---</option>
+                                        <% allCategories.map((val)=> { %>
+                                        <option value="<%= val?.id %>"
+                                            <%=(oneRowRecord?.categoryId?.category===val?.category) ? 'selected' : '' %>>
+                                            <%= val?.category %>
+                                        </option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label col-form-label">Subcategory</label>
+                                <div class="col-sm-9">
+                                    <select name="subcategory" id="subcategory" class="form-control bounce-in">
+                                        <option>---Select SubCategory---</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label col-form-label">Exsubcategory</label>
+                                <div class="col-sm-9">
+                                    <input type="text" value="<%= oneRowRecord?.extraSubCategory %>"
+                                        name="extrasubcategory" class="form-control shake-on-click"
+                                        placeholder="ExtraSubCategory Name Here">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary neon-glow">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        setTimeout(function () {
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.style.transition = "transform 1s, opacity 1s";
+                successMessage.style.transform = "rotateY(360deg)";
+                successMessage.style.opacity = "0";
+                setTimeout(() => successMessage.style.display = "none", 1000);
+            }
+        }, 3000);
+    };
+
+    const editSubcategory = () => {
+        let catid = `<%= oneRowRecord?.categoryId?.id %>`;
+        let subcateid = `<%= oneRowRecord?.subcategoryId?.id %>`;
+        $.ajax({
+            method: 'GET',
+            url: `/extrasubcategory/ajaxcategorywiserecords?categoryid=${catid}`,
+            success: function (res) {
+                let category = res.category;
+                let tbl = `<option>---select subcategory---</option>`;
+                category.map((val) => {
+                    tbl += `<option ${val?._id == subcateid ? 'selected' : ''} value=${val?._id}>${val?.subcategory}</option>`;
+                });
+                document.getElementById('subcategory').innerHTML = tbl;
+            }
+        });
+    };
+    editSubcategory();
+
+    const categoryChange = () => {
+        let catid = document.getElementById('category').value;
+        $.ajax({
+            method: 'GET',
+            url: `/extrasubcategory/ajaxcategorywiserecords?categoryid=${catid}`,
+            success: function (res) {
+                if (res.success) {
+                    let tbl = `<option value="">---select subcategory---</option>`;
                     let category = res.category;
-                    let tbl = "";
-                    tbl += `<option>---select subcategory---</option>`;
                     category.map((val) => {
-                        tbl += `<option ${val?._id == subcateid ? 'selected' : ''} value=${val?._id}>${val?.subcategory}</option>`;
+                        tbl += `<option value=${val?._id}>${val?.subcategory}</option>`;
                     });
                     document.getElementById('subcategory').innerHTML = tbl;
                 }
-            });
-        };
-        editSubcategory();
-    
-        const categoryChange = () => {
-            let catid = document.getElementById('category').value;
-            $.ajax({
-                method: 'GET',
-                url: `/extrasubcategory/ajaxcategorywiserecords?categoryid=${catid}`,
-                success: function (res) {
-                    if (res.success) {
-                        let tbl = "";
-                        tbl += `<option value="">---select subcategory---</option>`;
-                        let category = res.category;
-                        category.map((val) => {
-                            tbl += `<option value=${val?._id}>${val?.subcategory}</option>`;
-                        });
-                        document.getElementById('subcategory').innerHTML = tbl;
-                    }
-                }
-            });
-        };
-    </script>
+            }
+        });
+    };
+</script>
 
+<%- include('../footer') %>
 
-    <%- include('../footer') %>
+<style>
+    /* Bounce-in effect for form fields */
+    .bounce-in {
+        animation: bounceIn 1s ease-in-out;
+    }
+
+    @keyframes bounceIn {
+        0% { transform: scale(0.8); opacity: 0; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Shake effect on text input click */
+    .shake-on-click:focus {
+        animation: shake 0.3s ease-in-out;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+    }
+
+    /* Pulsating neon-glow button */
+    .neon-glow {
+        animation: glowEffect 1.5s infinite alternate;
+    }
+
+    @keyframes glowEffect {
+        from { box-shadow: 0 0 5px rgba(0, 255, 255, 0.8); }
+        to { box-shadow: 0 0 15px rgba(0, 255, 255, 1); }
+    }
+
+    /* Flip out success message */
+    .flip-out {
+        transition: transform 1s, opacity 1s;
+    }
+
+    /* Hover tilt effect */
+    .animated-card {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .animated-card:hover {
+        transform: rotateY(5deg) rotateX(5deg) scale(1.02);
+    }
+</style>

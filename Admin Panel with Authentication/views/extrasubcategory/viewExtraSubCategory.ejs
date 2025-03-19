@@ -1,127 +1,181 @@
 <%- include('../header') %>
 
-    <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Tables</h4>
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Library</li>
-                            </ol>
-                        </nav>
-                    </div>
+<div class="page-wrapper">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Tables</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Library</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-12">
-                    <% if(locals?.message?.success) { %>
-                        <div class="alert alert-success w-50" role="alert">
-                            <%= locals?.message?.success %>
-                        </div>
-                        <% } %>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title m-b-0">ExtraSubCategory Data</h5>
-                                </div>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">CategoryName</th>
-                                            <th scope="col">SubcategoryName</th>
-                                            <th scope="col">ExtraSubcategoryName</th>
-                                            <th scope="col">Action</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% extraSubCategory.map((val,i)=> { %>
-                                            <tr>
-                                                <th scope="row">
-                                                    <%= ++i %>
-                                                </th>
-                                                <td>
-                                                    <%= val?.categoryId?.category %>
-                                                </td>
-                                                <td>
-                                                    <%= val.subcategoryId?.subcategory %>
-                                                </td>
-                                                <td>
-                                                    <%= val?.extraSubCategory %>
-                                                </td>
-                                                <td>
-                                                    <a href="/extrasubcategory/deleteextrasubcategory?delId=<%= val?.id %>"
-                                                        class="btn btn-danger btn-sm">Delete&nbsp;&nbsp;<i
-                                                        class="fa fa-trash"></i></a>
-
-
-                                                    <a href="/extrasubcategory/editextrasubcategory?editId=<%= val?.id %>"
-                                                        class="btn btn-warning btn-sm">Edit&nbsp;&nbsp;<i
-                                                        class="fa fa-edit"></i></a>
-                                                </td>
-                                                <td>
-
-                                                    <% if(val?.status==="active" ) { %>
-                                                        <a href="/extrasubcategory/changestatus?stId=<%= val?.id %>&status=deactive"
-                                                            class="btn btn-success btn-sm text-capitalize">
-                                                            <%= val?.status %>
-                                                        </a>
-                                                        <% } else { %>
-                                                            <a href="/extrasubcategory/changestatus?stId=<%= val?.id %>&status=active"
-                                                                class="btn btn-danger btn-sm text-capitalize">
-                                                                <%= val?.status %>
-                                                            </a>
-                                                            <% } %>
-
-                                                </td>
-                                            </tr>
-                                            <% }) %>
-                                    </tbody>
-                                </table>
-                            </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center">
-            All Rights Reserved by Matrix-admin. Designed and Developed by <a
-                href="https://wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
 
-    <%- include('../footer') %>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <% if(locals?.message?.success) { %>
+                <div class="alert alert-success w-50 fade-out" id="success-message">
+                    <%= locals?.message?.success %>
+                </div>
+                <% } %>
+
+                <div class="card animated-card">
+                    <div class="card-body">
+                        <h5 class="card-title m-b-0">ExtraSubCategory Data</h5>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">CategoryName</th>
+                                <th scope="col">SubcategoryName</th>
+                                <th scope="col">ExtraSubcategoryName</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% extraSubCategory.map((val,i)=> { %>
+                            <tr class="table-row">
+                                <th scope="row"><%= ++i %></th>
+                                <td><%= val?.categoryId?.category %></td>
+                                <td><%= val.subcategoryId?.subcategory %></td>
+                                <td><%= val?.extraSubCategory %></td>
+                                <td>
+                                    <a href="/extrasubcategory/deleteextrasubcategory?delId=<%= val?.id %>"
+                                        class="btn btn-danger btn-sm delete-btn">
+                                        Delete&nbsp;&nbsp;<i class="fa fa-trash"></i>
+                                    </a>
+                                    <a href="/extrasubcategory/editextrasubcategory?editId=<%= val?.id %>"
+                                        class="btn btn-warning btn-sm edit-btn">
+                                        Edit&nbsp;&nbsp;<i class="fa fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <% if(val?.status==="active" ) { %>
+                                    <a href="/extrasubcategory/changestatus?stId=<%= val?.id %>&status=deactive"
+                                        class="btn btn-success btn-sm text-capitalize status-btn">
+                                        <%= val?.status %>
+                                    </a>
+                                    <% } else { %>
+                                    <a href="/extrasubcategory/changestatus?stId=<%= val?.id %>&status=active"
+                                        class="btn btn-danger btn-sm text-capitalize status-btn">
+                                        <%= val?.status %>
+                                    </a>
+                                    <% } %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+    </footer>
+</div>
+
+<%- include('../footer') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    // Fade out success message after 3 seconds
+    window.onload = function () {
+        setTimeout(function () {
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.style.transition = "opacity 1s";
+                successMessage.style.opacity = "0";
+                setTimeout(() => successMessage.style.display = "none", 1000);
+            }
+        }, 3000);
+    };
+
+    // Animate table rows one by one
+    document.addEventListener("DOMContentLoaded", function () {
+        let rows = document.querySelectorAll(".table-row");
+        rows.forEach((row, index) => {
+            setTimeout(() => {
+                row.classList.add("row-animate");
+            }, index * 200);
+        });
+    });
+</script>
+
+<style>
+    /* Success message fade-out effect */
+    .fade-out {
+        animation: fadeOut 3s forwards;
+    }
+
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    /* Bounce-in effect for table rows */
+    .table-row {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .row-animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Shake effect on delete button hover */
+    .delete-btn:hover {
+        animation: shake 0.3s ease-in-out;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+    }
+
+    /* Spin effect on edit button hover */
+    .edit-btn:hover {
+        animation: spin 0.5s linear;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Pulsating status button */
+    .status-btn {
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    /* Hover tilt effect on card */
+    .animated-card {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .animated-card:hover {
+        transform: rotateY(5deg) rotateX(5deg) scale(1.02);
+    }
+</style>
